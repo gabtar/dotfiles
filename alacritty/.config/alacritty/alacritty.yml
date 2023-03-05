@@ -1,0 +1,30 @@
+font:
+  normal:
+    family: Monoid NF
+    style: Regular
+
+  bold:
+    family: Monoid NF
+    style: Bold
+
+  italic:
+    family: Monoid NF
+    style: Italic
+
+  bold_italic:
+    family: Monoid NF
+    style: Bold Italic
+
+  size: 10
+
+window:
+  opacity: 0.85
+#
+# shell:
+#   program: /usr/bin/tmux
+#   args:
+#     - new-session
+#     - -A
+#     - -D
+#     - -s
+#     - main

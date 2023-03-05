@@ -1,0 +1,77 @@
+* {
+  black:      #000000;
+  red:        #e06c75;
+  green:      #98c379;
+  text:       #dfdfdf;
+  active:     #72708a;
+  white:      #b2b2b2;
+
+  spacing: 0;
+  background-color: transparent;
+
+  font: "Monoid NF 10";
+  text-color: @text;
+}
+
+window {
+  transparency: "real";
+  fullscreen: true;
+  background-color: #282c34cc;
+}
+
+mainbox {
+  padding: 20% 20%;
+}
+
+inputbar {
+  margin: 0px 0px 20px 0px;
+  children: [prompt, textbox-prompt-colon, entry, case-indicator];
+  background-color: @green;
+  padding: 10px 10px;
+}
+
+prompt {
+  text-color: @black;
+}
+
+textbox-prompt-colon {
+  expand: false;
+  str: " -> ";
+  text-color: @black;
+}
+
+entry {
+  margin: 0px 10px;
+  text-color: @black;
+}
+
+listview {
+  spacing: 0px;
+  dynamic: true;
+  scrollbar: false;
+}
+
+element {
+  padding: 5px;
+  text-color: @white;
+  highlight: bold #98c379;
+}
+
+element selected {
+  background-color: @active;
+  text-color: @text;
+}
+
+element urgent, element selected urgent {
+  text-color: @red;
+}
+
+element active, element selected active {
+  text-color: @active;
+}
+
+button selected {
+  padding: 5px;
+  border-radius: 3px;
+  background-color: @active;
+}
