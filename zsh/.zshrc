@@ -39,3 +39,5 @@ export NVM_DIR="$HOME/.nvm"
 # rbenv / Ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+export PAGER=""
