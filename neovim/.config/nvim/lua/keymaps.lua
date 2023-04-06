@@ -17,10 +17,10 @@ map('n', '<leader>p', '"+p', options) -- paste selected text from clipboard + in
 map('n', '<leader>y', '"+y', options) -- copy selected text to clipboard + (paste with ctrl-v on any other application)
 
 -- Auto inserts for matching pair
-local settings = { noremap = true, nowait = true }
+-- local settings = { noremap = true, nowait = true }
 
-map('i', '{', '{}<Esc>i', settings) -- Auto insert matching curly bracer after '{'
-map('i', '[', '[]<Esc>i', settings) -- Auto insert matching square bracer after '['
-map('i', '(', '()<Esc>i', settings) -- Auto insert matching round bracer after '('
-map('i', '"', '""<Esc>i', settings) -- Auto insert matching double quote after '"'
-map('i', "'", "''<Esc>i", settings) -- Auto insert matching single quote after '''
+-- map('i', '{', '{}<Esc>i', settings) -- Auto insert matching curly bracer after '{'
+-- map('i', '[', '[]<Esc>i', settings) -- Auto insert matching square bracer after '['
+-- map('i', '(', '()<Esc>i', settings) -- Auto insert matching round bracer after '('
+-- map('i', '"', '""<Esc>i', settings) -- Auto insert matching double quote after '"'
+-- map('i', "'", "''<Esc>i", settings) -- Auto insert matching single quote after '''
