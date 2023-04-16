@@ -29,7 +29,12 @@ source $ZSH/oh-my-zsh.sh
 
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+
+# Simple Colored go test
+# https://stackoverflow.com/questions/27242652/colorizing-golang-test-run-output
+alias gotest="go test -v . | sed ''/PASS/s//$(printf "\"\033[32mPASS\033[0m"\")/'' | sed ''/FAIL/s//$(printf "\"\033[31mFAIL\033[0m"\")/''"
 
 
 # -----------------------------------------------------------------------------
@@ -45,3 +50,8 @@ export NVM_DIR="$HOME/.nvm"
 # rbenv / Ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# The fuck
+eval $(thefuck --alias)
+# You can use whatever you want as an alias, like for Mondays:
+eval $(thefuck --alias FUCK)

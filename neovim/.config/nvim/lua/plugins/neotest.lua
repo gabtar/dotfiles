@@ -7,14 +7,17 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
     "antoinemadec/FixCursorHold.nvim",
-    -- Vim test 'Generic adapter'
+    -- Vim test for 'generic adapter'
     "vim-test/vim-test",
     -- Adapters
     "nvim-neotest/neotest-python",
-    "nvim-neotest/neotest-vim-test",
+    "nvim-neotest/neotest-vim-test", -- Supports all languages that vim test support
   },
+  commit = '28724010861dbf294f09b9ee1948d2da2823604b', -- Before 'nio' updates
   config = function()
     local neotest = require("neotest")
+    local options = { noremap = true, silent = true, nowait = true }
+    local keymap = vim.keymap.set
 
     require("neotest").setup({
       quickfix = {
@@ -70,47 +73,52 @@ return {
         unknown = "NeotestUnknown"
       },
       adapters = {
+        require("neotest-vim-test")({
+          ignore_file_types = { "python" },
+        }),
+        require("neotest-python"),
       }
     })
 
-
-
-    vim.keymap.set(
-    "n",
-    "<localleader>tfr",
-    function()
-      neotest.run.run(vim.fn.expand("%"))
-    end,
-    map_opts
+    -- Keymaps
+    -- Launch all tests (test full run)
+    keymap(
+      "n",
+      "<localleader>tfr",
+      function()
+        neotest.run.run(vim.fn.expand("%"))
+      end,
+      options
     )
 
-    vim.keymap.set(
-    "n",
-    "<localleader>tr",
-    function()
-      neotest.run.run()
-      neotest.summary.open()
-    end,
-    map_opts
+    -- Launch nearest
+    keymap(
+      "n",
+      "<localleader>tr",
+      function()
+        neotest.run.run()
+        neotest.summary.open()
+      end,
+      options
     )
 
-    vim.keymap.set(
-    "n",
-    "<localleader>to",
-    function()
-      neotest.output.open({ last_run = true, enter = true })
-    end
+    -- Open test output window
+    keymap(
+      "n",
+      "<localleader>to",
+      function()
+        neotest.output.open({ last_run = true, enter = true })
+      end
     )
 
-
-    vim.keymap.set(
-    "n",
-    "<localleader>tt",
-    function()
-      neotest.summary.toggle()
-      u.resize_vertical_splits()
-    end,
-    map_opts
+    -- Toogle test summary panel
+    keymap(
+      "n",
+      "<localleader>tt",
+      function()
+        neotest.summary.toggle()
+      end,
+      options
     )
   end
 
