@@ -55,3 +55,11 @@ eval "$(rbenv init -)"
 eval $(thefuck --alias)
 # You can use whatever you want as an alias, like for Mondays:
 eval $(thefuck --alias FUCK)
+
+# pnpm
+export PNPM_HOME="/home/gabtar/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

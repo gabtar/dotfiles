@@ -32,7 +32,7 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
 mod = "mod4"
-terminal = "alacritty"
+terminal = "kitty"
 
 
 # Colorscheme
@@ -279,6 +279,19 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
+                widget.CPU(
+                    foreground=theme['cyan'],
+                    background=theme['background'],
+                    format='{load_percent: .0f}%',
+                    update_interval=2
+                ),
+                widget.Memory(
+                    foreground=theme['cyan'],
+                    background=theme['background'],
+                    format='{MemPercent: .0f} %',
+                    update_interval=2
+                ),
+                separator(padding=2, background=theme["background"]),
                 MyVolume(
                     foreground=theme['magenta'],
                     background=theme['background'],

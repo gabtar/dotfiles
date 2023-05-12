@@ -90,7 +90,12 @@ return {
 
       -- Test hydra ui when invoking dap
       local hint = [[
-      _c_: dap continue
+
+          _n_:  step over             _c_: □ stop/close 
+          _i_:  step into
+          _o_:  step out
+          _p_:  step back
+
       ]]
 
 
@@ -108,6 +113,10 @@ return {
         body = "<leader>q",
         heads = {
           { "c", dap.continue },
+          { "n", dap.step_over },
+          { "i", dap.step_into },
+          { "o", dap.step_out },
+          { "p", dap.step_back },
         },
       })
 

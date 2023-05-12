@@ -8,7 +8,6 @@ return {
   },
   config = function()
     local lspconfig = require("lspconfig")
-
     local coq = require "coq"
 
     require("mason").setup()
@@ -43,6 +42,5 @@ return {
     })
 
     vim.cmd('COQnow -s')
-
   end,
 }

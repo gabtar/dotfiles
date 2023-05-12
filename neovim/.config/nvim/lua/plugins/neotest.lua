@@ -11,13 +11,25 @@ return {
     "vim-test/vim-test",
     -- Adapters
     "nvim-neotest/neotest-python",
+    "nvim-neotest/neotest-go",
     "nvim-neotest/neotest-vim-test", -- Supports all languages that vim test support
   },
-  commit = '28724010861dbf294f09b9ee1948d2da2823604b', -- Before 'nio' updates
   config = function()
     local neotest = require("neotest")
     local options = { noremap = true, silent = true, nowait = true }
     local keymap = vim.keymap.set
+
+    -- get neotest namespace (api call creates or returns namespace)
+    local neotest_ns = vim.api.nvim_create_namespace("neotest")
+    vim.diagnostic.config({
+      virtual_text = {
+        format = function(diagnostic)
+          local message =
+            diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+          return message
+        end,
+      },
+    }, neotest_ns)
 
     require("neotest").setup({
       quickfix = {
@@ -53,29 +65,11 @@ return {
       summary = {
         open = "botright vsplit | vertical resize 60"
       },
-      highlights = {
-        adapter_name = "NeotestAdapterName",
-        border = "NeotestBorder",
-        dir = "NeotestDir",
-        expand_marker = "NeotestExpandMarker",
-        failed = "NeotestFailed",
-        file = "NeotestFile",
-        focused = "NeotestFocused",
-        indent = "NeotestIndent",
-        marked = "NeotestMarked",
-        namespace = "NeotestNamespace",
-        passed = "NeotestPassed",
-        running = "NeotestRunning",
-        select_win = "NeotestWinSelect",
-        skipped = "NeotestSkipped",
-        target = "NeotestTarget",
-        test = "NeotestTest",
-        unknown = "NeotestUnknown"
-      },
       adapters = {
         require("neotest-vim-test")({
           ignore_file_types = { "python" },
         }),
+        require("neotest-go"),
         require("neotest-python"),
       }
     })
