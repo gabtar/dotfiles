@@ -32,12 +32,12 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
 mod = "mod4"
-terminal = "kitty"
+terminal = "alacritty"
 
 
 # Colorscheme
 one_dark = {
-    "background": "1e2127",
+    "background": "363636",
     "foreground": "abb2bf",
     "black":      "5c6370",
     "red":        "e06c75",
@@ -119,9 +119,9 @@ keys = [
         lazy.spawncmd(),
         desc="Spawn a command using a prompt widget"),
     # Volume controls
-    Key([], "XF86AudioRaiseVolume",lazy.spawn("amixer set Master 3%+")),
-    Key([], "XF86AudioLowerVolume",lazy.spawn("amixer set Master 3%-")),
-    Key([], "XF86AudioMute",lazy.spawn("amixer set Master toggle")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer set Master 3%+")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer set Master 3%-")),
+    Key([], "XF86AudioMute", lazy.spawn("amixer set Master toggle")),
     # Brightness controls
     Key([], "XF86MonBrightnessUp", lazy.spawn("light -A 5")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("light -U 5")),
@@ -190,7 +190,9 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 # Helper functions to build panel elements
-left_arrow = lambda background, foreground: widget.TextBox(
+
+
+def left_arrow(background, foreground): return widget.TextBox(
     font="Monoid NF",
     text="",
     fontsize=26,
@@ -198,7 +200,9 @@ left_arrow = lambda background, foreground: widget.TextBox(
     foreground=foreground,
     padding=0,
 )
-right_arrow = lambda background, foreground: widget.TextBox(
+
+
+def right_arrow(background, foreground): return widget.TextBox(
     font="Monoid NF",
     text="",
     fontsize=26,
@@ -206,13 +210,17 @@ right_arrow = lambda background, foreground: widget.TextBox(
     foreground=foreground,
     padding=0,
 )
-separator = lambda padding, background: widget.TextBox(
+
+
+def separator(padding, background): return widget.TextBox(
     padding=padding,
     linewidth=0,
     background=background
 )
 
 # Custom widgets
+
+
 class MyVolume(widget.Volume):
     def _configure(self, qtile, bar):
         widget.Volume._configure(self, qtile, bar)
@@ -250,15 +258,9 @@ screens = [
                 widget.Image(
                     filename='~/.config/qtile/python-logo.png',
                     margin=5, background=theme['background'],
-                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn("rofi -show combi")}
+                    mouse_callbacks={
+                        'Button1': lambda: qtile.cmd_spawn("rofi -show combi")}
                 ),
-                right_arrow(foreground=theme['background'], background=theme['cyan']),
-                widget.CurrentLayoutIcon(
-                    background=theme["cyan"],
-                    scale=0.6,
-                    padding=1,
-                ),
-                right_arrow(background=theme["background"], foreground=theme["cyan"]),
                 widget.GroupBox(
                     fontsize=13,
                     highlight_method="line",
@@ -295,7 +297,8 @@ screens = [
                 MyVolume(
                     foreground=theme['magenta'],
                     background=theme['background'],
-                    mouse_callbacks={'Button1': lambda: qtile.cmd_spawn("pavucontrol")},
+                    mouse_callbacks={
+                        'Button1': lambda: qtile.cmd_spawn("pavucontrol")},
                 ),
                 widget.Backlight(
                     backlight_name="intel_backlight",
@@ -315,29 +318,38 @@ screens = [
                 widget.Clock(format=" %I:%M",
                              background=theme['background'],
                              foreground=theme['green']),
-                left_arrow(foreground=theme['red'], background=theme['background']),
+                left_arrow(
+                    foreground=theme['yellow'], background=theme['background']),
+                widget.CurrentLayoutIcon(
+                    background=theme["yellow"],
+                    scale=0.6,
+                    padding=1,
+                ),
+                left_arrow(foreground=theme['red'],
+                           background=theme['yellow']),
                 widget.TextBox(
                     text=' ',
-                    mouse_callbacks= {
+                    mouse_callbacks={
                         'Button1':
-                        lambda: qtile.cmd_spawn(os.path.expanduser('~/.config/rofi/powermenu.sh'))
+                        lambda: qtile.cmd_spawn(os.path.expanduser(
+                            '~/.config/rofi/powermenu.sh'))
                     },
                     foreground=theme['background'],
                     background=theme['red']
                 )
             ],
-            26,
+            30,
             background=theme["background"],
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
     ),
 ]
 
 # Drag floating layouts.
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Drag([mod], "Button1", lazy.window.set_position_floating(),
+         start=lazy.window.get_position()),
+    Drag([mod], "Button3", lazy.window.set_size_floating(),
+         start=lazy.window.get_size()),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 

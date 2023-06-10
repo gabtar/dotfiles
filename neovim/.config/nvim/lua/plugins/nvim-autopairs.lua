@@ -17,7 +17,7 @@ return {
     remap('i', '<s-tab>', [[pumvisible() ? "<c-p>" : "<bs>"]], { expr = true, noremap = true })
 
     -- skip it, if you use another global object
-    _G.MUtils= {}
+    _G.MUtils = {}
 
     MUtils.CR = function()
       if vim.fn.pumvisible() ~= 0 then
