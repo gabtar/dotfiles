@@ -130,7 +130,7 @@ keys = [
 groups = [
     Group("1", label="", layout="monadtall"),
     Group("2", label="", layout="monadtall"),
-    Group("3", label="", layout="max"),
+    Group("3", label="󰖟", layout="max"),
     Group("4", label="", layout="monadtall"),
     Group("5", label="", layout="max"),
 ]
@@ -262,17 +262,19 @@ screens = [
                         'Button1': lambda: qtile.cmd_spawn("rofi -show combi")}
                 ),
                 widget.GroupBox(
-                    fontsize=13,
+                    fontsize=16,
                     highlight_method="line",
-                    highlight_color=theme["black"],
-                    this_current_screen_border=theme["cyan"],
-                    block_highlight_text_color=theme["white"],
-                    inactive=theme["black"],
-                    borderwidth=2,
-                    rounded=False,
+                    highlight_color=theme["background"],
+                    this_current_screen_border=theme["magenta"],
+                    block_highlight_text_color=theme["magenta"],
+                    inactive=theme["white"],
+                    borderwidth=3,
+                    padding_x=10,
+                    padding_y=3,
+                    use_mouse_wheel=True,
                 ),
                 widget.Prompt(),
-                widget.WindowName(),
+                widget.WindowName(max_chars=30, font="Sans bold"),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
@@ -319,14 +321,14 @@ screens = [
                              background=theme['background'],
                              foreground=theme['green']),
                 left_arrow(
-                    foreground=theme['yellow'], background=theme['background']),
+                    foreground=theme['white'], background=theme['background']),
                 widget.CurrentLayoutIcon(
-                    background=theme["yellow"],
+                    background=theme["white"],
                     scale=0.6,
                     padding=1,
                 ),
-                left_arrow(foreground=theme['red'],
-                           background=theme['yellow']),
+                left_arrow(foreground=theme['black'],
+                           background=theme['white']),
                 widget.TextBox(
                     text=' ',
                     mouse_callbacks={
@@ -334,11 +336,11 @@ screens = [
                         lambda: qtile.cmd_spawn(os.path.expanduser(
                             '~/.config/rofi/powermenu.sh'))
                     },
-                    foreground=theme['background'],
-                    background=theme['red']
+                    foreground=theme['red'],
+                    background=theme['black']
                 )
             ],
-            30,
+            32,
             background=theme["background"],
         ),
     ),

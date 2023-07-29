@@ -1,26 +1,21 @@
--- keymaps.lua 
+-- keymaps.lua
+-- [[ Basic Keymaps ]]
 
-local map = vim.api.nvim_set_keymap
+-- Keymaps for better default experience
+-- See `:help vim.keymap.set()`
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
--- Remap space as leader key
-map('', '<Space>', '<Nop>', { noremap = true, silent = true })
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+-- Remap for dealing with word wrap
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-local options = { noremap = true }
-
-map('n', '<A-j>', ':m .+1<CR>==', options) -- swap with above line and correct identation
-map('n', '<A-k>', ':m .-2<CR>==', options) -- swap with below line and correct identation
-
--- Clipboard mappings
-map('n', '<leader>p', '"+p', options) -- paste selected text from clipboard + into vim
-map('n', '<leader>y', '"+y', options) -- copy selected text to clipboard + (paste with ctrl-v on any other application)
-
--- Auto inserts for matching pair
--- local settings = { noremap = true, nowait = true }
-
--- map('i', '{', '{}<Esc>i', settings) -- Auto insert matching curly bracer after '{'
--- map('i', '[', '[]<Esc>i', settings) -- Auto insert matching square bracer after '['
--- map('i', '(', '()<Esc>i', settings) -- Auto insert matching round bracer after '('
--- map('i', '"', '""<Esc>i', settings) -- Auto insert matching double quote after '"'
--- map('i', "'", "''<Esc>i", settings) -- Auto insert matching single quote after '''
+-- [[ Highlight on yank ]]
+-- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})

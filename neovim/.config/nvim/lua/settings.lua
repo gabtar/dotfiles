@@ -1,56 +1,51 @@
 -- settings.lua
+-- [[ Setting options ]]
+-- See `:help vim.o`
+-- NOTE: You can change these options as you wish!
 
-local options = vim.o
+-- Set highlight on search
+vim.o.hlsearch = true
 
--- global options
-options.title = true                          -- Show filename on title
-options.number = true                         -- Show line numbers
-options.cursorline = true                     -- Highlight currentline
-options.mouse = 'a'                           -- Mouse integration
-options.termguicolors = true
-options.breakindent = true
-options.clipboard = 'unnamedplus'             -- Use system clipboard
+-- Make line numbers default
+vim.wo.number = true
 
-options.tabstop = 2		                        -- 2 spaces identation
-options.shiftwidth = 2
-options.softtabstop = 2
-options.shiftround = true
-options.expandtab = true	                    -- Insert spaces when <TAB>
-options.clipboard = 'unnamedplus'             -- Copies to system clipboard
-options.colorcolumn = '80'                    -- Column marker at 80 lines
-options.relativenumber = true                 -- Relative line number
+-- Enable mouse mode
+vim.o.mouse = 'a'
 
-options.ignorecase = true                     -- Ignorecase on search
-options.smartcase = true                      -- No ignorecase if capitals
+-- Identation
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.softtabstop = 2
+vim.o.shiftround = true
 
-options.spelllang = 'en-es'                  -- Check spelling
-options.background = 'dark'
+-- Sync clipboard between OS and Neovim.
+--  Remove this option if you want your OS clipboard to remain independent.
+--  See `:help 'clipboard'`
+vim.o.clipboard = 'unnamedplus'
 
-options.showmode = false                      -- Don't display actual mode on cmd line
+-- Enable break indent
+vim.o.breakindent = true
+
+-- Save undo history
+vim.o.undofile = true
+
+-- Case-insensitive searching UNLESS \C or capital in search
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+-- Keep signcolumn on by default
+vim.wo.signcolumn = 'yes'
+
+-- Decrease update time
+vim.o.updatetime = 250
+vim.o.timeout = true
+vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-options.completeopt = 'menu,menuone,noselect'
+vim.o.completeopt = 'menuone,noselect'
 
--- Set colorscheme
--- vim.cmd("colorscheme kanagawa")
+-- NOTE: You should make sure your terminal supports this
+vim.o.termguicolors = true
 
--- Highlight on yank
-vim.cmd [[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
-]]
-
--- Integrated terminal
-vim.cmd [[
-  augroup neovim_terminal
-      autocmd!
-      " Enter Terminal-mode (insert) automatically
-      autocmd TermOpen * startinsert
-      " Disables number lines on terminal buffers
-      autocmd TermOpen * :set nonumber norelativenumber
-      " allows you to use Ctrl-c on terminal window
-      autocmd TermOpen * nnoremap <buffer> <C-c> i<C-c>
-  augroup END
-]]
+-- Sets relative numbers in line numbers
+vim.o.relativenumber = true
