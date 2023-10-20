@@ -12,6 +12,7 @@ return {
 		-- Adapters
 		"nvim-neotest/neotest-python",
 		"nvim-neotest/neotest-go",
+		"haydenmeade/neotest-jest",
 		"nvim-neotest/neotest-vim-test", -- Supports all languages that vim test support
 	},
 	config = function()
@@ -95,6 +96,14 @@ return {
 				}),
 				require("neotest-go"),
 				require("neotest-python"),
+				require('neotest-jest')({
+					jestCommand = "npm test --",
+					jestConfigFile = "custom.jest.config.ts",
+					env = { CI = true },
+					cwd = function(path)
+						return vim.fn.getcwd()
+					end,
+				}),
 			}
 		})
 

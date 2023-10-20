@@ -7,6 +7,9 @@ return {
 		{ 'williamboman/mason.nvim', config = true },
 		'williamboman/mason-lspconfig.nvim',
 
+		-- Aditional configs for jdtls (Java)
+		'mfussenegger/nvim-jdtls',
+
 		-- Useful status updates for LSP
 		-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
 		{ 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
@@ -94,6 +97,10 @@ return {
 		mason_lspconfig.setup_handlers {
 			-- default handler, set ups all installed lsp providers
 			function(server_name)
+				if server_name == "jdtls" then
+					return
+				end
+
 				require('lspconfig')[server_name].setup {
 					capabilities = capabilities,
 					on_attach = on_attach,

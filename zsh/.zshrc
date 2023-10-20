@@ -36,6 +36,9 @@ alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=
 # https://stackoverflow.com/questions/27242652/colorizing-golang-test-run-output
 alias gotest="go test -v . | sed ''/PASS/s//$(printf "\"\033[32mPASS\033[0m"\")/'' | sed ''/FAIL/s//$(printf "\"\033[31mFAIL\033[0m"\")/''"
 
+# Needed for lombok in nvim
+export JDTLS_JVM_ARGS="-javaagent:$HOME/.local/share/nvim/mason/packages/jdtls/lombok.jar"
+
 
 # -----------------------------------------------------------------------------
 # Environment variables

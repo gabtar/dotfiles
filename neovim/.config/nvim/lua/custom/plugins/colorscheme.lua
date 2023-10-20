@@ -1,16 +1,9 @@
--- kanagawa.nvim
--- NeoVim dark colorscheme inspired by the colors of the famous painting by Katsushika Hokusai.
+-- OneDarkPro.nvim
+-- Atom's iconic One Dark theme, for Neovim. Fully customisable, with Treesitter, LSP semantic token support and a light variant
 return {
-	'cpea2506/one_monokai.nvim',
+	'olimorris/onedarkpro.nvim',
 	priority = 1000,
 	config = function()
-		require("one_monokai").setup({
-			transparent = false,
-			colors = {},
-			themes = function(colors)
-				return {}
-			end,
-			italics = true,
-		})
+		vim.cmd("colorscheme onedark")
 	end,
 }
