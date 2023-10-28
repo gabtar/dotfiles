@@ -310,6 +310,102 @@ screens = [
                     format=" {percent:2.0%}",
                     show_short_text=False
                 ),
+                widget.Clock(format="  %I:%M",
+                             background=theme['background'],
+                             foreground=theme['green']),
+                left_arrow(
+                    foreground=theme['green'], background=theme['background']),
+                widget.CurrentLayoutIcon(
+                    background=theme["green"],
+                    scale=0.6,
+                    padding=1,
+                ),
+                left_arrow(foreground=theme['red'],
+                           background=theme['green']),
+                widget.TextBox(
+                    text=' ',
+                    mouse_callbacks={
+                        'Button1':
+                        lambda: qtile.cmd_spawn(os.path.expanduser(
+                            '~/.config/rofi/powermenu.sh'))
+                    },
+                    foreground=theme['black'],
+                    background=theme['red']
+                )
+            ],
+            28,
+            background=theme["background"],
+        ),
+    ),
+    Screen(
+        top=bar.Bar(
+            [
+                separator(padding=1, background=theme["black"]),
+                widget.Image(
+                    filename='~/.config/qtile/python-logo.png',
+                    margin=5, background=theme['black'],
+                    mouse_callbacks={
+                        'Button1': lambda: qtile.cmd_spawn("rofi -show combi")}
+                ),
+                left_arrow(
+                    foreground=theme['background'], background=theme['black']),
+                widget.GroupBox(
+                    fontsize=16,
+                    font="Monoid NF",
+                    background=theme['background'],
+                    highlight_method="line",
+                    highlight_color=theme["background"],
+                    this_current_screen_border=theme["magenta"],
+                    block_highlight_text_color=theme["magenta"],
+                    inactive=theme["white"],
+                    borderwidth=3,
+                    padding_x=10,
+                    padding_y=3,
+                    use_mouse_wheel=True,
+                ),
+                widget.Prompt(),
+                widget.WindowName(max_chars=30, font="Sans bold"),
+                widget.Chord(
+                    chords_colors={
+                        "launch": ("#ff0000", "#ffffff"),
+                    },
+                    name_transform=lambda name: name.upper(),
+                ),
+                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
+                # widget.StatusNotifier(),
+                widget.CPU(
+                    foreground=theme['cyan'],
+                    background=theme['background'],
+                    format='{load_percent: .0f}%',
+                    update_interval=2
+                ),
+                widget.Memory(
+                    foreground=theme['cyan'],
+                    background=theme['background'],
+                    format='{MemPercent: .0f} %',
+                    update_interval=2
+                ),
+                separator(padding=2, background=theme["background"]),
+                MyVolume(
+                    foreground=theme['magenta'],
+                    background=theme['background'],
+                    mouse_callbacks={
+                        'Button1': lambda: qtile.cmd_spawn("pavucontrol")},
+                ),
+                widget.Backlight(
+                    backlight_name="intel_backlight",
+                    fmt=" {}",
+                    step=5,
+                    foreground=theme['magenta'],
+                    background=theme['background'],
+                    change_command="light -S {0}"
+                ),
+                widget.Battery(
+                    foreground=theme['magenta'],
+                    background=theme['background'],
+                    format=" {percent:2.0%}",
+                    show_short_text=False
+                ),
                 widget.Systray(),
                 widget.Clock(format="  %I:%M",
                              background=theme['background'],
