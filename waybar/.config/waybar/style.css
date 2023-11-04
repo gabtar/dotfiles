@@ -1,0 +1,217 @@
+/* =============================================================================
+ *
+ * Waybar configuration
+ *
+ * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+ *
+ * =========================================================================== */
+
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+/* Colors */
+/* One dark theme */
+@define-color background #1e2127;
+@define-color foreground #abb2bf;
+@define-color black #5c6370;
+@define-color red #e06c75;
+@define-color green #98c379;
+@define-color yellow #d19a66;
+@define-color blue #61afef;
+@define-color magenta #c678dd;
+@define-color cyan #56b6c2;
+@define-color white #828791;
+
+@define-color highlight #5294e2 ;
+@define-color base1  #404552 ;
+
+@keyframes blink-warning {
+    70% {
+        color: @white;
+    }
+
+    to {
+        color: @yellow;
+    }
+}
+
+@keyframes blink-critical {
+    70% {
+      color: @white;
+    }
+
+    to {
+        color: @red;
+    }
+}
+
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+
+/* Reset all styles */
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 1px;
+    padding: 0px;
+}
+
+/* The whole bar */
+#waybar {
+    background: @background;
+    color: @foreground;
+    font-family: Dejavu Sans;
+    font-size: 12px;
+}
+
+/* Every modules */
+#battery,
+#clock,
+#backlight,
+#cpu,
+#memory,
+#mode,
+#custom-weather,
+#network,
+#pulseaudio,
+#temperature,
+#tray,
+#idle_inhibitor,
+#custom-power,
+
+/* -----------------------------------------------------------------------------
+ * Modules styles
+ * -------------------------------------------------------------------------- */
+
+#battery {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    margin-bottom: 0px;
+    padding: 0px 4px;
+    background: @background;
+}
+
+#battery {
+    padding-left: 4px;
+}
+
+#battery.warning {
+    color: @yellow;
+}
+
+#battery.critical {
+    color: @red;
+}
+
+#battery.warning.discharging {
+    animation-name: blink-warning;
+    animation-duration: 3s;
+}
+
+#battery.critical.discharging {
+    animation-name: blink-critical;
+    animation-duration: 2s;
+}
+
+#cpu.warning {
+    color: @yellow;
+}
+
+#cpu.critical {
+    color: @red;
+    animation-name: blink-critical;
+    animation-duration: 1s;
+}
+
+#memory {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    padding-left: 4px;
+}
+
+#memory.warning {
+    color: @yellow;
+ }
+
+#memory.critical {
+    color: @red;
+    animation-name: blink-critical;
+    animation-duration: 1s;
+    padding-left:5px;
+    padding-right:5px;
+}
+
+#mode {
+    background: @highlight;
+    border-bottom: 3px transparent;
+    color:white;
+    margin-left: 5px;
+    padding: 7px;
+}
+
+#network.disconnected {
+    color: orange;
+}
+
+#clock {
+  padding-top: 6px;
+  color: @white;
+  font-weight: bold;
+}
+
+#pulseaudio, #backlight, #battery {
+    color: @magenta;
+}
+
+#pulseaudio.muted {
+    color: @red;
+}
+
+#temperature.critical {
+    color: @red;
+}
+
+#window {
+    font-weight: bold;
+}
+
+#workspaces {
+    font-family: monospace;
+    font-size: 16px;
+}
+
+#workspaces button {
+    min-width: 40px;
+    margin-left: 5px;
+    color: @white;
+    border-bottom: 2px solid transparent;
+}
+
+#workspaces button.active {
+    color: @blue;
+    border-bottom: 2px solid @blue;
+}
+
+#workspaces button.urgent {
+    border-color: @red;
+    color: @red;
+}
+
+#custom-power {
+    margin-left:15px;
+    margin-right:15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: @red;
+}
+
+#custom-launcher {
+    font-size:15px;
+    margin-left:15px;
+    margin-right:10px;
+}

@@ -1,0 +1,151 @@
+// Global 
+{
+	"layer": "top",
+		"position": "top",
+
+		// If height property would be not present, it'd be calculated dynamically
+		"height": 24,
+
+		"modules-left": [
+			"hyprland/workspaces",
+			"hyprland/window",
+		],
+
+		"modules-center": [
+			"clock",
+		],
+
+		"modules-right": [
+			"network",
+			"cpu",
+			"memory",
+			"pulseaudio",
+			"backlight#value",
+			"battery",
+			"tray",
+			"custom/power",
+		],
+
+		// Modules
+		"battery": {
+			"states": {
+				// "good": 95,
+				"warning": 30,
+				"critical": 15
+			},
+			"format": "{icon} {capacity}%",
+			"format-charging": " {capacity}%",
+			"format-plugged": " {capacity}%",
+			// "format-good": "", // An empty format will hide the module
+			// "format-full": "",
+			"format-icons": ["", "", "", "", ""]
+		},
+
+		"clock": {
+			"interval": 10,
+			"format": " {:%A, %e %b %Y}",
+			"format-alt": "🕒 {:%H:%M}", // format on click
+			"tooltip-format": "{:%e %B %Y}"
+		},
+
+		"cpu": {
+			"interval": 5,
+			"format": " {usage}% ({load})", // Icon: microchip
+			"states": {
+				"warning": 70,
+				"critical": 90,
+			},
+			"on-click": "alacritty -e 'htop'",
+		},
+		"memory": {
+			"interval": 5,
+			"format": " {}%", // Icon: memory
+			"on-click": "alacritty -e 'htop'", 
+			"states": {
+				"warning": 70,
+				"critical": 90
+			}
+		},
+
+		"network": {
+			"interval": 5,
+			// "format-wifi": "  {essid} ({signalStrength}%)", // Icon: wifi
+			"format-wifi": " {signalStrength}%", // Icon: wifi
+			"format-ethernet": "  {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
+			"format-disconnected": "⚠  Disconnected",
+			"tooltip-format": "{ifname}: {ipaddr}",
+			// "on-click": "xfce4-terminal -e 'nmtui'",
+		},
+		"network#vpn": {
+			"interface": "tun0",
+			"format": "  {essid} ({signalStrength}%)",
+			"format-disconnected": "⚠  Disconnected",
+			"tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+		},
+
+		"hyprland/window": {
+			"format": "{}",
+			"max-length": 30,
+		},
+
+		"hyprland/workspaces": {
+			"format": "{icon}",
+			"on-click": "activate",
+			"format-icons": {
+				"1": "",
+				"2": "",
+				"3": "",
+				"4": "",
+				"urgent": "",
+				// "active": "",
+				// "default": ""
+			},
+			"persistent_workspaces": {
+				"1": [],
+				"2": [],
+				"3": [],
+				"4": [],
+			},
+			"sort-by-number": true,
+			"active-only": false
+		},
+
+		"pulseaudio": {
+			"scroll-step": 1, // %, can be a float
+			"format": "{icon} {volume}%",
+			"format-bluetooth": "{icon} {volume}%  {format_source}",
+			"format-bluetooth-muted": " {icon}  {format_source}",
+			"format-muted": "婢 {format_source}",
+			"format-source": " {volume}% ",
+			"format-source-muted": "",
+			"format-icons": {
+				"headphone": "",
+				"hands-free": "וֹ",
+				"headset": "  ",
+				"phone": "",
+				"portable": "",
+				"car": "",
+				"default": [""]
+			},
+			"on-click": "pavucontrol",
+			"on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+			"on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
+		},
+
+		"tray": {
+			"icon-size": 18,
+			"spacing":10,
+		},
+
+		"backlight#value" :{
+			"format": " {percent}%",
+			"on-scroll-down": "light -U 5",
+			"on-scroll-up": "light -A 5"
+		},
+
+		"custom/power": {
+			"format":"⏻",
+			"on-click": "exec ~/.config/wofi/powermenu.sh",
+			"tooltip": false,
+		},
+}
