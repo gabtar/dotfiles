@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# TODO: remove all packages before installing
+# stow --target=$HOME --delete tmux/
+
 # Get selected options or all
 if [ $# -eq 0 ]; then
     files=*/
