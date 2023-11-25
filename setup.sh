@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# TODO: remove all packages before installing
-# stow --target=$HOME --delete tmux/
-
 # Get selected options or all
 if [ $# -eq 0 ]; then
     files=*/
@@ -18,5 +15,6 @@ for element in $files ; do
     echo "Found $dir"
     echo "Installing $dir..."
     
+    stow --target=$HOME --delete $dir
     stow --target=$HOME $dir 
 done
