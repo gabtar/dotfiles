@@ -11,7 +11,6 @@
  * -------------------------------------------------------------------------- */
 
 /* Colors */
-/* One dark theme */
 @define-color background #1e2127;
 @define-color foreground #abb2bf;
 @define-color black #5c6370;
@@ -21,14 +20,13 @@
 @define-color blue #61afef;
 @define-color magenta #c678dd;
 @define-color cyan #56b6c2;
-@define-color white #828791;
-
+@define-color light #828791;
+@define-color white #EEEEEE;
 @define-color highlight #5294e2 ;
-@define-color base1  #404552 ;
 
 @keyframes blink-warning {
     70% {
-        color: @white;
+        color: @light;
     }
 
     to {
@@ -38,7 +36,7 @@
 
 @keyframes blink-critical {
     70% {
-      color: @white;
+      color: @light;
     }
 
     to {
@@ -67,7 +65,7 @@
     font-size: 12px;
 }
 
-/* Every modules */
+/* Default style */
 #battery,
 #clock,
 #backlight,
@@ -81,11 +79,6 @@
 #tray,
 #idle_inhibitor,
 #custom-power,
-
-/* -----------------------------------------------------------------------------
- * Modules styles
- * -------------------------------------------------------------------------- */
-
 #battery {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -93,6 +86,7 @@
     margin-bottom: 0px;
     padding: 0px 4px;
     background: @background;
+    border-radius: 5px;
 }
 
 #battery {
@@ -146,22 +140,14 @@
     padding-right:5px;
 }
 
-#mode {
-    background: @highlight;
-    border-bottom: 3px transparent;
-    color:white;
-    margin-left: 5px;
-    padding: 7px;
-}
-
 #network.disconnected {
     color: orange;
 }
 
 #clock {
-  padding-top: 6px;
-  color: @white;
-  font-weight: bold;
+    padding-top: 6px;
+    color: @light;
+    font-weight: bold;
 }
 
 #pulseaudio, #backlight, #battery {
@@ -178,11 +164,15 @@
 
 #window {
     font-weight: bold;
+    padding-top: 3px;
+    margin-left: 5px;
 }
 
 #workspaces {
     font-family: monospace;
     font-size: 16px;
+    background: @black;
+    border-radius: 5px;
 }
 
 #workspaces button {
@@ -202,12 +192,20 @@
     color: @red;
 }
 
+#tray {
+    background: @black;
+    padding: 3px 3px;
+    margin: 5px 5px;
+}
+
 #custom-power {
     margin-left:15px;
-    margin-right:15px;
+    padding: 0 8px;
     font-size: 18px;
     font-weight: bold;
-    color: @red;
+    color: @black;
+    background: @red;
+    border-radius: 5px;
 }
 
 #custom-launcher {

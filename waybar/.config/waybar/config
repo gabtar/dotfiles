@@ -43,8 +43,8 @@
 
 		"clock": {
 			"interval": 10,
-			"format": " {:%A, %e %b %Y}",
-			"format-alt": "🕒 {:%H:%M}", // format on click
+			"format": "🕒 {:%H:%M}",
+			"format-alt": " {:%A, %e %b %Y}", // format on click
 			"tooltip-format": "{:%e %B %Y}"
 		},
 
@@ -57,6 +57,7 @@
 			},
 			"on-click": "alacritty -e 'htop'",
 		},
+
 		"memory": {
 			"interval": 5,
 			"format": " {}%", // Icon: memory
@@ -76,16 +77,10 @@
 			"tooltip-format": "{ifname}: {ipaddr}",
 			// "on-click": "xfce4-terminal -e 'nmtui'",
 		},
-		"network#vpn": {
-			"interface": "tun0",
-			"format": "  {essid} ({signalStrength}%)",
-			"format-disconnected": "⚠  Disconnected",
-			"tooltip-format": "{ifname}: {ipaddr}/{cidr}",
-		},
 
 		"hyprland/window": {
-			"format": "{}",
-			"max-length": 30,
+			"format": " 🗔  {}",
+			"max-length": 40,
 		},
 
 		"hyprland/workspaces": {
@@ -148,4 +143,5 @@
 			"on-click": "exec ~/.config/wofi/powermenu.sh",
 			"tooltip": false,
 		},
+
 }
