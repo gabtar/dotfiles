@@ -20,7 +20,7 @@ return {
 		vim.fn.sign_define("DiagnosticSignHint",
 			{ text = "󰌵", texthl = "DiagnosticSignHint" })
 
-		vim.api.nvim_set_keymap("n", "<space>nt", ":Neotree<CR>", { noremap = true, desc = '[N]eo[T]ree' })
+		vim.api.nvim_set_keymap("n", "<space>nt", ":Neotree toggle<CR>", { noremap = true, desc = '[N]eo[T]ree' })
 
 		require("neo-tree").setup({
 			close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
