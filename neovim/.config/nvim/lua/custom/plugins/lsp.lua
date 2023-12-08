@@ -104,6 +104,15 @@ return {
 					return
 				end
 
+				if server_name == "emmet_ls" then
+					require('lspconfig')[server_name].setup {
+						filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue", "php" },
+						capabilities = capabilities,
+						on_attach = on_attach,
+						settings = servers[server_name],
+					}
+				end
+
 				require('lspconfig')[server_name].setup {
 					capabilities = capabilities,
 					on_attach = on_attach,
