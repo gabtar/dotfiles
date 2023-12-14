@@ -6,12 +6,13 @@ return {
 		require 'FTerm'.setup({
 			border     = 'shadow', -- Other options :h nvim_open_win
 			dimensions = {
-				height = 0.6,
+				height = 0.4,
 				width = 1.0,
 				x = 0.0, -- X axis of the terminal window
 				y = 1.0, -- Y axis of the terminal window
 			},
 			hl         = 'ColorColumn',
+			blend      = 20,
 		})
 
 		-- Example keybindings

@@ -72,7 +72,14 @@ return {
 			gopls = {},
 			pylsp = {},
 			tsserver = {},
-
+			tailwindcss = {
+				filetypes = { "html", "javascript", "javascriptreact", "typescriptreact", "vue", "php" },
+			},
+			phpactor = {},
+			emmet_ls = {
+				filetypes = { "php", "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
+			},
+			cssls = {},
 			lua_ls = {
 				Lua = {
 					workspace = { checkThirdParty = false },
@@ -102,15 +109,6 @@ return {
 			function(server_name)
 				if server_name == "jdtls" then
 					return
-				end
-
-				if server_name == "emmet_ls" then
-					require('lspconfig')[server_name].setup {
-						filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue", "php" },
-						capabilities = capabilities,
-						on_attach = on_attach,
-						settings = servers[server_name],
-					}
 				end
 
 				require('lspconfig')[server_name].setup {

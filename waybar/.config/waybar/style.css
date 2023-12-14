@@ -22,7 +22,7 @@
 @define-color cyan #56b6c2;
 @define-color light #828791;
 @define-color white #EEEEEE;
-@define-color highlight #5294e2 ;
+@define-color highlight #5294e2;
 
 @keyframes blink-warning {
     70% {
@@ -36,7 +36,7 @@
 
 @keyframes blink-critical {
     70% {
-      color: @light;
+        color: @light;
     }
 
     to {
@@ -89,10 +89,6 @@
     border-radius: 5px;
 }
 
-#battery {
-    padding-left: 4px;
-}
-
 #battery.warning {
     color: @yellow;
 }
@@ -130,14 +126,14 @@
 
 #memory.warning {
     color: @yellow;
- }
+}
 
 #memory.critical {
     color: @red;
     animation-name: blink-critical;
     animation-duration: 1s;
-    padding-left:5px;
-    padding-right:5px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 #network.disconnected {
@@ -150,7 +146,9 @@
     font-weight: bold;
 }
 
-#pulseaudio, #backlight, #battery {
+#pulseaudio,
+#backlight,
+#battery {
     color: @magenta;
 }
 
@@ -172,7 +170,6 @@
     font-family: monospace;
     font-size: 16px;
     background: @black;
-    border-radius: 5px;
 }
 
 #workspaces button {
@@ -199,17 +196,15 @@
 }
 
 #custom-power {
-    margin-left:15px;
+    margin-left: 15px;
     padding: 0 8px;
     font-size: 18px;
     font-weight: bold;
-    color: @black;
-    background: @red;
-    border-radius: 5px;
+    color: @red;
 }
 
 #custom-launcher {
-    font-size:15px;
-    margin-left:15px;
-    margin-right:10px;
+    font-size: 15px;
+    margin-left: 15px;
+    margin-right: 10px;
 }
