@@ -1,9 +1,10 @@
 -- kanagawa.nvim
--- NeoVim dark colorscheme inspired by the colors of the famous painting by Katsushika Hokusai.
+-- Nord for Neovim, but warmer and darker. Supports a variety of plugins and other platforms.
 return {
-	'rebelot/kanagawa.nvim',
+	'AlexvZyl/nordic.nvim',
+	lazy = false,
 	priority = 1000,
 	config = function()
-		vim.cmd 'colorscheme kanagawa-wave'
-	end,
+		require 'nordic'.load()
+	end
 }

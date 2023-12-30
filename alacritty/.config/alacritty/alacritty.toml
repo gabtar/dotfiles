@@ -1,0 +1,25 @@
+[font]
+size = 12
+
+[font.bold]
+family = "Monoid NF"
+style = "Bold"
+
+[font.bold_italic]
+family = "Monoid NF"
+style = "Bold Italic"
+
+[font.italic]
+family = "Monoid NF"
+style = "Italic"
+
+[font.normal]
+family = "Monoid NF"
+style = "Regular"
+
+[shell]
+args = ["new-session", "-A", "-D", "-s", "main"]
+program = "/usr/bin/tmux"
+
+[window]
+opacity = 1
