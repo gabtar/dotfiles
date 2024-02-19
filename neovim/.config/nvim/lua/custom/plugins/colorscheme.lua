@@ -1,10 +1,10 @@
--- kanagawa.nvim
--- Nord for Neovim, but warmer and darker. Supports a variety of plugins and other platforms.
+-- onenord.nvim
+--  Neovim theme that combines the Nord and Atom One Dark color palettes for a more vibrant programming experience.
 return {
-	'AlexvZyl/nordic.nvim',
+	'rmehri01/onenord.nvim',
 	lazy = false,
 	priority = 1000,
 	config = function()
-		require 'nordic'.load()
+		vim.cmd 'colorscheme onenord'
 	end
 }

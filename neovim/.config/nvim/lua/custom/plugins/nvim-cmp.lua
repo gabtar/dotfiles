@@ -90,6 +90,7 @@ return {
 					behavior = cmp.ConfirmBehavior.Replace,
 					select = true,
 				},
+				-- Iterate over autocomplete options with Tab
 				['<Tab>'] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
@@ -110,10 +111,10 @@ return {
 				end, { 'i', 's' }),
 			},
 			sources = {
-				{ name = 'path' },
 				{ name = 'nvim_lsp',               keyword_length = 1 },
-				{ name = 'buffer',                 keyword_length = 3 },
 				{ name = 'luasnip',                keyword_length = 2 },
+				{ name = 'buffer',                 keyword_length = 3 },
+				{ name = 'path' },
 				{ name = 'nvim_lsp_signature_help' },
 			},
 		}

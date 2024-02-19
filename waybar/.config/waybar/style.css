@@ -16,13 +16,15 @@
 @define-color black #5c6370;
 @define-color red #e06c75;
 @define-color green #98c379;
-@define-color yellow #d19a66;
+@define-color yellow #e5c07b;
 @define-color blue #61afef;
+@define-color lightblue #2b2f38;
 @define-color magenta #c678dd;
 @define-color cyan #56b6c2;
 @define-color light #828791;
 @define-color white #EEEEEE;
 @define-color highlight #5294e2;
+
 
 @keyframes blink-warning {
     70% {
@@ -141,9 +143,13 @@
 }
 
 #clock {
-    padding-top: 6px;
+    margin: 5px 0;
+    padding-top: 8px;
     color: @light;
+    background: @lightblue;
+    padding: 4px 10px;
     font-weight: bold;
+    border-radius: 10px;
 }
 
 #pulseaudio,
@@ -161,15 +167,19 @@
 }
 
 #window {
+    margin: 5px 0;
     font-weight: bold;
-    padding-top: 3px;
     margin-left: 5px;
+    color: @light;
+    background: @lightblue;
+    padding: 4px 10px;
+    border-radius: 10px;
 }
 
 #workspaces {
     font-family: monospace;
     font-size: 16px;
-    background: @black;
+    background: @background;
 }
 
 #workspaces button {
@@ -180,7 +190,7 @@
 }
 
 #workspaces button.active {
-    color: @blue;
+    color: @highlight;
     border-bottom: 2px solid @blue;
 }
 

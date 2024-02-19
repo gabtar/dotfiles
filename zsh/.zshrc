@@ -48,6 +48,10 @@ export JDTLS_JVM_ARGS="-javaagent:$HOME/.local/share/nvim/mason/packages/jdtls/l
 # Set default pager to none. Default in zsh is less
 export PAGER=""
 
+# Go
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
+
 # Nvm / Node
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -65,6 +69,10 @@ eval $(thefuck --alias FUCK)
 export PNPM_HOME="/home/gabtar/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+
+export CARGO_HOME="/home/gabtar/.cargo/bin"
+export PATH="$CARGO_HOME:$PATH"
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
