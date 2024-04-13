@@ -5,7 +5,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="arrow-milon"
+ZSH_THEME="common"
 
 
 # Uncomment the following line to display red dots whilst waiting for completion.
@@ -56,20 +56,28 @@ export PATH="$GOPATH/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# rbenv / Ruby
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
 # The fuck
 eval $(thefuck --alias)
 # You can use whatever you want as an alias, like for Mondays:
 eval $(thefuck --alias FUCK)
+
+# JAVA
+export JAVA_HOME="/home/gabtar/.jenv/versions/21.0.2"
+export PATH=$JAVA_HOME/bin:$PATH
+
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+# Local binares
+export PATH=/home/gabtar/.local/bin:$PATH
 
 # pnpm
 export PNPM_HOME="/home/gabtar/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
+# Scala
+export PATH="/home/gabtar/.local/share/coursier/bin:$PATH"
 
 export CARGO_HOME="/home/gabtar/.cargo/bin"
 export PATH="$CARGO_HOME:$PATH"
