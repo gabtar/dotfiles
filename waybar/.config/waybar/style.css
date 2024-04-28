@@ -10,6 +10,18 @@
  * Keyframes
  * -------------------------------------------------------------------------- */
 
+
+/* Onedark colors */
+@define-color purple #c678dd;
+@define-color green #98c379;
+@define-color orange #d19a66;
+@define-color blue #61afef;
+@define-color	yellow #e5c07b;
+@define-color cyan #56b6c2;
+@define-color red #e86671;
+@define-color grey #5c6370;
+@define-color black #181a1f;
+
 @keyframes blink-warning {
     70% {
         color: white;
@@ -124,6 +136,13 @@
     color: orange;
 }
 
+#memory,
+#cpu,
+#temperature {
+    color: @black;
+    background-color: @yellow;
+}
+
 #memory.critical {
     color: red;
     animation-name: blink-critical;
@@ -138,23 +157,23 @@
 }
 
 #network {
-    /* No styles */
+    color: white;
 }
 
 #network.disconnected {
-    color: orange;
+    color: @orange;
 }
 
-#pulseaudio {
-    /* No styles */
+#pulseaudio,
+#tray,
+#clock {
+    color: @black;
+    background-color: @orange;
 }
 
 #pulseaudio.muted {
     /* No styles */
-}
-
-#custom-spotify {
-    color: rgb(102, 220, 105);
+    color: @red;
 }
 
 #temperature {
@@ -169,6 +188,10 @@
     /* No styles */
 }
 
+#custom-power {
+    background-color: @red;
+}
+
 #window {
     color: #848b98;
     font-weight: bold;
@@ -179,17 +202,15 @@
     padding-bottom: 2px;
     padding-left: 5px;
     padding-right: 10px;
-    color: #888888;
+    color: @grey;
 }
 
 #workspaces button.focused {
-    border-radius: 5px;
-    border: 1px solid #c678dd;
     color: white;
-    background-color: #8a3fa0;
+    background-color: @purple;
 }
 
 #workspaces button.urgent {
     border-color: #e86671;
-    color: #e86671;
+    color: @red;
 }
