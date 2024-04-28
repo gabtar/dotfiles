@@ -1,10 +1,15 @@
--- onenord.nvim
---  Neovim theme that combines the Nord and Atom One Dark color palettes for a more vibrant programming experience.
+-- onedark.nvim
+-- One dark and light colorscheme for neovim >= 0.5.0 written in lua based on Atom's One Dark and Light theme. Additionally, it comes with 5 color variant styles
 return {
-	'rebelot/kanagawa.nvim',
+	'navarasu/onedark.nvim',
 	lazy = false,
 	priority = 1000,
 	config = function()
-		vim.cmd 'colorscheme kanagawa'
+		require('onedark').setup {
+			style = 'darker'
+		}
+		require('onedark').load()
+
+		vim.cmd 'colorscheme onedark'
 	end
 }
