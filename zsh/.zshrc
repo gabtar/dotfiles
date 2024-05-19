@@ -7,7 +7,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="arrow-custom"
 
-
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
@@ -27,6 +26,12 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# Autostart tmux
+if [ -z "$TMUX" ]
+then
+    tmux attach -t TMUX || tmux new -s TMUX
+fi
 
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
