@@ -7,8 +7,15 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		require("oil").setup({
-			default_file_explorer = true
+			default_file_explorer = true,
+			float = {
+				padding = 10,
+				win_options = {
+					winblend = 10,
+				},
+			},
 		})
-		vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+		vim.api.nvim_set_keymap("n", "<leader>oi", "<cmd>lua require('oil').toggle_float('.')<CR>",
+			{ noremap = true, silent = true, desc = "Toggle [Oi]l floating window" })
 	end
 }
