@@ -67,13 +67,14 @@
     "clock#time": {
         "interval": 1,
         "format": "󰥔  {:%H:%M}",
-        "tooltip": false
+        "tooltip": false,
+				"timezone": "America/Argentina/Buenos_Aires"
     },
 
     "clock#date": {
       "interval": 10,
       "format": "  {:%e %b %Y}", // Icon: calendar-alt
-      "tooltip-format": "{:%e %B %Y}"
+      "tooltip-format": "{:%e %B %Y}",
     },
 
     "cpu": {

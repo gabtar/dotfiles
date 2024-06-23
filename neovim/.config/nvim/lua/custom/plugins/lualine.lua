@@ -3,7 +3,7 @@
 return {
 	'nvim-lualine/lualine.nvim',
 	-- See `:help lualine.txt`
-	dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = {
 		options = {
 			icons_enabled = true,
