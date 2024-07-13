@@ -205,7 +205,7 @@
     color: @grey;
 }
 
-#workspaces button.focused {
+#workspaces button.active {
     color: white;
     background-color: @purple;
 }

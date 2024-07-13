@@ -5,7 +5,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="typewritten"
+ZSH_THEME="spaceship"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -21,11 +21,16 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  forgit
   zsh-autosuggestions
   fzf-zsh-plugin
 )
 
+# Source config files
 source $ZSH/oh-my-zsh.sh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+[ -f ~/.forgit/forgit.plugin.zsh ] && source ~/.forgit/forgit.plugin.zsh
 
 # Autostart tmux
 if [ -z "$TMUX" ]
@@ -43,8 +48,8 @@ alias glog="git log --graph --abbrev-commit --decorate --date=relative --format=
 # https://stackoverflow.com/questions/27242652/colorizing-golang-test-run-output
 alias gotest="go test -v . | sed ''/PASS/s//$(printf "\"\033[32mPASS\033[0m"\")/'' | sed ''/FAIL/s//$(printf "\"\033[31mFAIL\033[0m"\")/''"
 
-# Debian updates
-alias debupdate="sudo apt update && sudo apt upgrade"
+# Arch updates
+alias archupdate="sudo pacman -Syu"
 
 # Needed for lombok in nvim
 export JDTLS_JVM_ARGS="-javaagent:$HOME/.local/share/nvim/mason/packages/jdtls/lombok.jar"
@@ -89,6 +94,3 @@ export PATH="/home/gabtar/.local/share/coursier/bin:$PATH"
 
 export CARGO_HOME="/home/gabtar/.cargo/bin"
 export PATH="$CARGO_HOME:$PATH"
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)

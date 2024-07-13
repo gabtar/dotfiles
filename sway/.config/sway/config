@@ -29,7 +29,7 @@ set $menu wofi --show run | xargs swaymsg exec
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
-output * bg /home/gabtar/Firefox_wallpaper.png fill
+output * bg  ~/.config/sway/wall/quote.jpg fill
 #
 # Example configuration:
 #
