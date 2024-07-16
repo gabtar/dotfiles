@@ -1,20 +1,18 @@
 #!/bin/env bash
 
 # Options for powermenu
-logout=" Logout"
-shutdown=" Shutdown"
-reboot=" Reboot"
-sleep=" Sleep"
+logout=" 󰍃 Logout "
+shutdown="  Shutdown "
+reboot=" 󰜉 Reboot "
+sleep="  Suspend "
 
-# Get answer from user via rofi
+# Get user response from tofi
 selected_option=$(echo "$logout
-$sleep
 $reboot
-$shutdown" | rofi -dmenu\
-                  -i\
-                  -p "Power"\
-                  -config "~/.config/rofi/powermenu.rasi"\
-                 )
+$shutdown
+$sleep" | tofi -c ~/.config/tofi/powerconfig)
+
+echo $selected_option
 
 # Do something based on selected option
 if [ "$selected_option" == "$logout" ]

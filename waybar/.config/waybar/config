@@ -98,7 +98,7 @@
 
 		"custom/power": {
 			"format":"  ⏻  ",
-			"on-click": "exec ~/.config/wofi/powermenu.sh",
+			"on-click": "exec ~/.config/tofi/powermenu.sh",
 			"tooltip": false,
 		},
 
