@@ -18,8 +18,33 @@ return {
   config = function()
     -- [[ Configure Telescope ]]
     -- See `:help telescope` and `:help telescope.setup()`
+    require('telescope.pickers.layout_strategies').horizontal_merged = function(picker, max_columns, max_lines,
+                                                                                layout_config)
+      local layout = require('telescope.pickers.layout_strategies').horizontal(picker, max_columns, max_lines,
+        layout_config)
+
+      layout.prompt.title = 'Find'
+      layout.prompt.borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' }
+
+      layout.results.title = 'Files'
+      layout.results.borderchars = { '─', '│', '─', '│', '├', '┤', '┘', '└' }
+      layout.results.line = layout.results.line - 1
+      layout.results.height = layout.results.height + 1
+
+      layout.preview.title = 'Preview'
+      layout.preview.borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' }
+
+      return layout
+    end
+
     require('telescope').setup {
       defaults = {
+        layout_strategy = 'horizontal_merged',
+        layout_config = {
+          horizontal = {
+            prompt_position = "top",
+          },
+        },
         mappings = {
           i = {
             ['<C-u>'] = false,

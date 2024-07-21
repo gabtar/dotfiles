@@ -10,9 +10,17 @@ return {
 	config = function()
 		-- [[ Configure Treesitter ]]
 		-- See `:help nvim-treesitter`
+
+		vim.filetype.add({
+			pattern = {
+				[".*%.blade%.php"] = "blade",
+			},
+		})
+
 		require('nvim-treesitter.configs').setup {
 			-- Add languages to be installed here that you want installed for treesitter
-			ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'html', 'css', 'scss', 'javascript', 'tsx', 'typescript', 'java', 'scala', 'php', 'bash', 'yaml', 'dockerfile' },
+
+			ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'html', 'css', 'scss', 'javascript', 'tsx', 'typescript', 'java', 'scala', 'php', 'php_only', 'bash', 'yaml', 'dockerfile' },
 
 			-- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
 			auto_install = false,
@@ -72,6 +80,16 @@ return {
 					},
 				},
 			},
+		}
+
+		local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+		parser_config.blade = {
+			install_info = {
+				url = "https://github.com/EmranMR/tree-sitter-blade",
+				files = { "src/parser.c" },
+				branch = "main",
+			},
+			filetype = "blade",
 		}
 	end
 }
