@@ -14,8 +14,11 @@ return {
 					winblend = 10,
 				},
 			},
+			view_options = {
+				show_hidden = true,
+			},
 		})
-		vim.api.nvim_set_keymap("n", "<leader>oi", "<cmd>lua require('oil').toggle_float('.')<CR>",
+		vim.api.nvim_set_keymap("n", "<leader>oi", "<cmd>vsplit | wincmd l | vertical resize -60 | Oil<CR>",
 			{ noremap = true, silent = true, desc = "Toggle [Oi]l floating window" })
 	end
 }

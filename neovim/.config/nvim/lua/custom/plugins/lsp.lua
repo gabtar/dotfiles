@@ -73,11 +73,11 @@ return {
 			pylsp = {},
 			tsserver = {},
 			tailwindcss = {
-				filetypes = { "html", "javascript", "javascriptreact", "typescriptreact", "vue", "php" },
+				filetypes = { "html", "javascript", "javascriptreact", "typescriptreact", "vue", "php", "blade" },
 			},
 			phpactor = {},
 			emmet_ls = {
-				filetypes = { "php", "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
+				filetypes = { "php", "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue", "blade" },
 			},
 			cssls = {},
 			lua_ls = {

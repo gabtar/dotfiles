@@ -131,6 +131,7 @@
 
 		"hyprland/workspaces": {
 			"format": " {icon} ",
+			"smooth-scrolling-threshold": 3,
 			"on-click": "activate",
 			"format-icons": {
 				"1": "󰋜",
@@ -141,7 +142,7 @@
 				// "active": "",
 				// "default": ""
 			},
-			"persistent_workspaces": {
+			"persistent-workspaces": {
 				"1": [],
 				"2": [],
 				"3": [],
