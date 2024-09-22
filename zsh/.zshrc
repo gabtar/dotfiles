@@ -33,10 +33,10 @@ source /usr/share/fzf/completion.zsh
 [ -f ~/.forgit/forgit.plugin.zsh ] && source ~/.forgit/forgit.plugin.zsh
 
 # Autostart tmux
-if [ -z "$TMUX" ]
-then
-    tmux attach -t TMUX || tmux new -s TMUX
-fi
+# if [ -z "$TMUX" ]
+# then
+#     tmux attach -t TMUX || tmux new -s TMUX
+# fi
 
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
@@ -89,8 +89,15 @@ export PNPM_HOME="/home/gabtar/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
+# Composer
+export PATH=~/.composer/vendor/bin:$PATH
+
 # Scala
 export PATH="/home/gabtar/.local/share/coursier/bin:$PATH"
 
 export CARGO_HOME="/home/gabtar/.cargo/bin"
 export PATH="$CARGO_HOME:$PATH"
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

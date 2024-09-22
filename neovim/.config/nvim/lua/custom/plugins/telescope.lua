@@ -27,9 +27,9 @@ return {
       layout.prompt.borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' }
 
       layout.results.title = 'Files'
-      layout.results.borderchars = { '─', '│', '─', '│', '├', '┤', '┘', '└' }
-      layout.results.line = layout.results.line - 1
-      layout.results.height = layout.results.height + 1
+      layout.results.borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' }
+      layout.results.line = layout.results.line
+      layout.results.height = layout.results.height
 
       layout.preview.title = 'Preview'
       layout.preview.borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' }
@@ -40,11 +40,6 @@ return {
     require('telescope').setup {
       defaults = {
         layout_strategy = 'horizontal_merged',
-        layout_config = {
-          horizontal = {
-            prompt_position = "top",
-          },
-        },
         mappings = {
           i = {
             ['<C-u>'] = false,
