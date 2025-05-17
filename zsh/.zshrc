@@ -5,7 +5,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
+ZSH_THEME="arrow-custom"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -90,14 +90,14 @@ export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
 # Composer
-export PATH=~/.composer/vendor/bin:$PATH
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 
 # Scala
 export PATH="/home/gabtar/.local/share/coursier/bin:$PATH"
 
-export CARGO_HOME="/home/gabtar/.cargo/bin"
+# Rsut
+export CARGO_HOME="/home/gabtar/.cargo/bin/bin"
 export PATH="$CARGO_HOME:$PATH"
-
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)

@@ -131,6 +131,14 @@ return {
 			options
 		)
 
+		-- Launch nearest w/ vim test
+		keymap(
+			"n",
+			"<localleader>tn",
+			":TestNearest<CR>",
+			options
+		)
+
 		-- Open test output window
 		keymap(
 			"n",

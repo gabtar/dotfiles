@@ -1,10 +1,13 @@
--- one_monokai.nvim
--- Nord for Neovim, but warmer and darker. Supports a variety of plugins and other platforms.
+-- nordic.nvim
+-- One dark and light colorscheme for neovim >= 0.5.0 written in lua based on Atom's One Dark and Light theme. Additionally, it comes with 5 color variant styles
 return {
-	'AlexvZyl/nordic.nvim',
-	lazy = false,
-	priority = 1000,
+	"navarasu/onedark.nvim",
+	priority = 1000, -- make sure to load this before all the other start plugins
 	config = function()
-		vim.cmd.colorscheme 'nordic'
+		require('onedark').setup {
+			style = 'dark'
+		}
+		-- Enable theme
+		require('onedark').load()
 	end
 }
